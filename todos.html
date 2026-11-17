@@ -297,6 +297,7 @@ dash.draw('f_coche', (sel) => {
   sel.value = cmF.coche; sel.onchange = () => { cmF.coche = sel.value; window.cmPick = sel.value ? {kind: 'sub', key: sel.value} : null; window.cmPendingZoom = 'fit'; cmRedraw(); };
 });
 document.getElementById('f-q').addEventListener('input', (e) => { clearTimeout(window.cmQT); window.cmQT = setTimeout(() => { cmF.q = e.target.value.trim(); cmRedraw(); }, 250); });
+window.addEventListener('load', () => { const q = new URLSearchParams(location.search).get('q'); if (q) { const i = document.getElementById('f-q'); i.value = q; cmF.q = q; cmRedraw(); } });
 document.getElementById('f-reset').addEventListener('click', () => { cmF.prov = ''; cmF.coche = ''; cmF.q = ''; document.getElementById('f-q').value = ''; window.cmPick = null; window.cmZoomT = null; window.cmPendingZoom = 'pen'; cmRedraw(); });
 document.querySelectorAll('.cm-btn[data-z]').forEach((b) => b.addEventListener('click', () => { if (window.cmMap) window.cmMap.go(b.getAttribute('data-z')); }));
 </script>
@@ -314,7 +315,7 @@ window.cmCarCard = (s, ads) => {
   fact('截止 Cierre', s.cierre_iso || s.cierre || '未公布');
   fact('看车 Visita', s.visita_zh + (s.visita_como_zh ? '：' + s.visita_como_zh : ''), /^Sí|Contactar/.test(s.visita) ? 'cm-ok' : 'cm-bad');
   const ad = fact('停放地址 Dirección', s.pub ? s.direccion : '未公布，拍卖地点 / se subasta en: ' + s.direccion); ad.append(' · '); ad.append(cmLink(s.mapa, '谷歌地图 Maps'));
-  fact('结论', `${s.veredicto_zh} / ${s.veredicto}`, cmVC(s.veredicto_zh));
+  { const sp = fact('结论', `${s.veredicto_zh} / ${s.veredicto}`, cmVC(s.veredicto_zh)); const a = cmEl('a', ' · 为什么? ¿Por qué?'); a.href = 'explicacion.html#' + s.vid; a.target = '_blank'; sp.append(a); }
   b.append(f);
   if (!s.buscado) { b.append(cmEl('p', `这五家车行不卖这类车（${s.cat_zh}），所以没找同款。 / Estos concesionarios no venden este tipo de vehículo: no se buscó.`, 'cm-none')); return b; }
   if (!ads.length) { b.append(cmEl('p', '五家车行都没有同款或相近的车。 / Ningún coche igual o parecido en los 5 concesionarios.', 'cm-none')); return b; }
@@ -432,7 +433,7 @@ dash.draw('m_info', (el) => {
       const b = cmEl('div', null, 'cm-blk'); b.append(cmEl('h4', `车牌 ${s.matricula} · ${s.coche_zh} · ${s.anio} · ${s.vid}`)); b.append(cmEl('div', `官网写法 Web oficial: «${s.oficial}» · ${s.codigo}`, 'cm-k'));
       b.append(kv('地址 Dirección', s.pub ? s.direccion : '未公布 / ' + s.direccion)); b.append(kv('地图 Mapa', '在谷歌地图打开 / Abrir en Google Maps', s.mapa));
       b.append(kv('看车 Visita', `${s.visita_zh} / ${s.visita}`)); b.append(kv('怎么看 Cómo', `${s.visita_como_zh} / ${s.visita_como}`));
-      b.append(kv('公里 Km', cmInt(s.km))); b.append(kv('截止 Cierre', s.cierre_iso || s.cierre)); b.append(kv('估价 Valor', cmEur(s.valor))); b.append(kv('结论', `${s.veredicto_zh} / ${s.veredicto}`));
+      b.append(kv('公里 Km', cmInt(s.km))); b.append(kv('截止 Cierre', s.cierre_iso || s.cierre)); b.append(kv('估价 Valor', cmEur(s.valor))); b.append(kv('结论', `${s.veredicto_zh} / ${s.veredicto}`)); { const a = cmEl('a', '为什么? ¿Por qué?'); a.href = 'explicacion.html#' + s.vid; a.target = '_blank'; b.append(a); }
       b.append(kv('官方链接 Anuncio', s.src === 'BOE' ? 'BOE' : 'TGSS', s.link));
       if (p.kind === 'sub') { const m = C.filter((c) => c.vid === s.vid); b.append(cmEl('h4', `同款在卖 ${m.length} 条 / Parecidos`)); m.forEach((c) => b.append(comp(c))); }
       else if (s.n_anuncios) b.append(kv('同款在卖', `${s.n_anuncios} 条 · desde ${cmEur(s.precio_min)}`));
@@ -463,7 +464,7 @@ dash.draw('tb_fecha', (el) => {
   cmOkS().sort((a, b) => (a.cierre_iso && b.cierre_iso ? a.cierre_iso.localeCompare(b.cierre_iso) : a.cierre_iso ? -1 : b.cierre_iso ? 1 : a.n - b.n)).forEach((s) => {
     const tr = cmEl('tr'); cmTd(tr, s.cierre_iso || '未公布', s.cierre_iso ? null : s.cierre, 'cm-nw'); cmTd(tr, s.matricula, s.vid, 'cm-nw'); cmTd(tr, s.coche_zh, s.oficial); cmTd(tr, s.anio, null, 'cm-nw'); cmTd(tr, cmInt(s.km), null, 'cm-n');
     cmTd(tr, s.provincia_zh, s.provincia); cmTd(tr, cmEur(s.valor), null, 'cm-n'); cmTd(tr, cmEur(s.puja_max), null, 'cm-n'); cmTd(tr, s.buscado ? cmInt(s.n_anuncios) : '没找', s.buscado ? null : 'no buscado', 'cm-n');
-    cmTd(tr, s.mejor || '—'); cmTd(tr, cmEur(s.mejor_precio), null, 'cm-n'); cmTd(tr, s.veredicto_zh, s.veredicto, cmVC(s.veredicto_zh)); el.append(tr);
+    cmTd(tr, s.mejor || '—'); cmTd(tr, cmEur(s.mejor_precio), null, 'cm-n'); { const td = cmTd(tr, s.veredicto_zh, s.veredicto, cmVC(s.veredicto_zh)); const a = cmEl('a', '为什么? ¿Por qué?'); a.href = 'explicacion.html#' + s.vid; a.target = '_blank'; a.style.display = 'block'; a.style.fontSize = '12px'; td.append(a); } el.append(tr);
   });
 });
 dash.draw('tb_lugar', (el) => {
