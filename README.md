@@ -1,11 +1,12 @@
-# 278 辆拍卖车 vs 二手车行 · Subastas vs concesionarios
+# 拍卖车：推荐的 3 辆 + 需要核实的 29 辆 · Subastas: recomendados y pendientes
 
-互动页面 / Página interactiva: https://wh14-ua.github.io/subastas-coches/
+页面 / Página: https://wh14-ua.github.io/subastas-coches/
 
-BOE 和社保局 TGSS 的全部 278 辆拍卖车：按省份列出车在哪里、能不能看车，以及 OcasionPlus、Flexicar、Autohero、HR Motor、Clicars 里同款或相近的车和一次性付款价（2026-11-17 查询）。
+按省份排列。每辆拍卖车：估价、建议最高出价、截止日期、能不能去看车；下面是卖同款的车行（OcasionPlus、Flexicar、HR Motor、Autohero、Clicars）、在哪里、价格、状态（在售或已预订）、能不能去店里看。
 
-Los 278 coches de las subastas BOE y TGSS por provincia: dónde están, si se pueden visitar y coches parecidos a la venta en esos cinco concesionarios, con precio al contado (consultado el 17-11-2026).
+Ordenado por provincia. Cada coche subastado: valor, puja máxima, cierre y si se puede ver; debajo, los concesionarios que venden uno igual: dónde, precio, estado y si se puede ir a la tienda.
 
+全部 278 辆拍卖车 / Los 278 coches: https://wh14-ua.github.io/subastas-coches/todos.html
 
-所有检查都是自动完成的，没有人去现场看车。广告每天都在变。
-Comprobado de forma automática, sin ver los coches. Los anuncios cambian cada día.
+数据 2026-11-17。所有检查都是自动完成的，没有人去现场看车。广告每天都在变。
+Datos del 17-11-2026. Comprobado de forma automática, sin ver los coches. Los anuncios cambian cada día.
