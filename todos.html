@@ -21,7 +21,7 @@ color-scheme:light dark}
 --cds-surface-popover:#2b2a27;--cds-border:#47453f;--cds-shadow-popover:0 4px 16px rgba(0,0,0,.5);
 --cds-chart-grid:#45433e;--cds-chart-axis:#77746c;--cds-text-secondary:#c2bfb8}}
 html,body{margin:0;background:var(--color-bg);color:var(--color-fg)}
-.cm-page{max-width:1280px;margin:0 auto;padding:24px 20px 48px;line-height:1.5}
+.cm-page{max-width:1600px;margin:0 auto;padding:24px 20px 48px;line-height:1.5}
 @media (max-width:600px){.cm-page{padding:16px 12px 40px}}
 .dash-select{font:inherit;font-size:var(--cds-font-size-caption);color:var(--color-fg);background:var(--color-bg);border:1px solid var(--color-border-line);border-radius:var(--cds-radius);padding:6px 8px;max-width:100%}
 </style>
@@ -107,7 +107,9 @@ window.dash = (() => {
 .cm-info .cm-blk:first-of-type{border-top:0}
 .cm-info .cm-k{color:var(--color-fg-muted)}
 .cm-info a{color:inherit}
-.cm-scroll{overflow-x:auto;border:1px solid var(--color-border-line);border-radius:var(--cds-radius)}
+.cm-scroll{overflow:auto;max-height:82vh;border:1px solid var(--color-border-line);border-radius:var(--cds-radius)}
+.cm-t th{z-index:1}
+#por-fecha .cm-t td:nth-child(4),#por-fecha .cm-t td:nth-child(12){min-width:150px;max-width:230px}
 .cm-t{border-collapse:collapse;width:100%;font-size:var(--cds-font-size-caption);font-variant-numeric:tabular-nums}
 .cm-t th{text-align:left;font-weight:var(--cds-font-weight-medium);color:var(--color-fg);background:var(--color-panel);padding:8px 10px;border-bottom:1px solid var(--color-border-line);white-space:nowrap;position:sticky;top:0;vertical-align:bottom}
 .cm-t th small{display:block;color:var(--color-fg-muted);font-weight:400}
@@ -179,6 +181,12 @@ tr.cm-group.mk-visto .cm-grp-t{text-decoration:line-through;opacity:.5}
 .cm-favs-l li{padding:6px 0;border-top:1px solid var(--color-border-line);font-size:var(--cds-font-size-caption)}
 .cm-pill-mk{border-color:#b58900 !important}
 @media (max-width:600px){.cm-mk-b{min-height:36px;min-width:36px}}
+.cm-sec .cm-t th{white-space:normal}
+#por-fecha .cm-t td:nth-child(12){max-width:140px}
+#por-fecha .cm-t td:nth-child(2){white-space:normal;max-width:92px}
+#por-fecha .cm-t td:nth-child(4){min-width:130px;max-width:200px}
+.cm-t td.cm-mk-td{padding:6px 4px}
+.cm-t td.cm-mk-td .cm-mk-b{min-width:28px;padding:4px 6px}
 </style>
 
 <div class="cm">

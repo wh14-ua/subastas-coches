@@ -5,7 +5,7 @@
 :root{--f:system-ui,-apple-system,"Segoe UI","PingFang SC","Microsoft YaHei","Noto Sans SC",Roboto,sans-serif;--fg:#1f1e1d;--mut:#6b6964;--bg:#fff;--panel:#f6f5f2;--line:#e2e0da;--ok:#2b7a3e;--bad:#c0392b;--warn:#a85400;--blue:#1d5fa8;color-scheme:light dark}
 @media (prefers-color-scheme:dark){:root{--fg:#ecebe7;--mut:#a5a29b;--bg:#1c1b19;--panel:#262522;--line:#3a3935;--ok:#6fcf87;--bad:#ff8a80;--warn:#f0a24b;--blue:#8ab8f0}}
 html,body{margin:0;background:var(--bg);color:var(--fg);font-family:var(--f);font-size:15px;line-height:1.5}
-.pg{max-width:1320px;margin:0 auto;padding:22px 18px 48px}
+.pg{max-width:1600px;margin:0 auto;padding:22px 18px 48px}
 h1{font-size:24px;margin:0 0 4px}h2{font-size:19px;margin:28px 0 4px}
 .es{color:var(--mut);font-size:13px}.es-b{display:block}
 .box{background:var(--panel);border:1px solid var(--line);border-radius:8px;padding:10px 14px;margin:12px 0}
@@ -14,12 +14,13 @@ h1{font-size:24px;margin:0 0 4px}h2{font-size:19px;margin:28px 0 4px}
 .kpi b{font-size:20px;display:block}.kpi[aria-pressed=true]{outline:2px solid var(--fg)}
 .ctrl{display:flex;flex-wrap:wrap;gap:8px 12px;align-items:center;margin:10px 0}
 select,input[type=search]{font:inherit;font-size:14px;color:var(--fg);background:var(--bg);border:1px solid var(--line);border-radius:8px;padding:6px 8px;max-width:100%}
-.scroll{overflow-x:auto;border:1px solid var(--line);border-radius:8px}
-table{border-collapse:collapse;width:100%;min-width:1480px;font-size:13.5px}
-td.mot{min-width:280px}td.car{min-width:200px}
+.scroll{overflow:auto;max-height:82vh;border:1px solid var(--line);border-radius:8px}
+table{border-collapse:collapse;width:100%;font-size:13.5px}
+td.car{min-width:220px}
+tr.main td{border-bottom:0}tr.sub td{padding:0 8px 10px 8px;font-size:13px}tr.sub td small{display:inline;margin-left:6px}tr.sub a{margin-left:8px}
 th,td{padding:7px 8px;border-bottom:1px solid var(--line);text-align:left;vertical-align:top}
-th{background:var(--panel);position:sticky;top:0;font-weight:600}th small,td small{display:block;color:var(--mut);font-weight:400;font-size:12px}
-td.n,th.n{text-align:right;white-space:nowrap}.nw{white-space:nowrap}
+th{background:var(--panel);position:sticky;top:0;z-index:1;font-weight:600}th small,td small{display:block;color:var(--mut);font-weight:400;font-size:12px}
+td.n,th.n{text-align:right}td.n{white-space:nowrap}td.n small{white-space:normal}.nw{white-space:nowrap}th{min-width:0}
 .c-verde{color:var(--ok);font-weight:600}.c-amarillo{color:var(--warn);font-weight:600}.c-azul{color:var(--blue);font-weight:600}.c-rojo,.c-excluido,.c-cancelado{color:var(--bad);font-weight:600}
 a{color:inherit}
 .mk{display:inline-flex;gap:3px;white-space:nowrap}.mk button{font:inherit;font-size:13px;border:1px solid var(--line);background:var(--bg);color:var(--mut);border-radius:999px;padding:4px 7px;min-width:32px;min-height:32px;cursor:pointer}
@@ -28,7 +29,7 @@ tr.mk-like>td{background:rgba(242,201,76,.18)}tr.mk-visto>td:not(.mkc){text-deco
 .sync{font-size:13px}.sync.ok{color:var(--ok)}.sync.bad{color:var(--bad)}.sync.warn{color:var(--warn)}
 @media (max-width:760px){
  .pg{padding:14px 10px 40px} table{min-width:0} td.mot,td.car{min-width:0} table,thead,tbody,tr,td{display:block} thead{display:none}
- tr{border:1px solid var(--line);border-radius:8px;margin:0 0 10px;padding:6px 8px} td{border:0;padding:3px 0}
+ tr{border:1px solid var(--line);border-radius:8px;margin:0 0 10px;padding:6px 8px} tr.main{border-bottom:0;border-radius:8px 8px 0 0;margin-bottom:0} tr.sub{border-top:0;border-radius:0 0 8px 8px} td{border:0;padding:3px 0} tr.sub td{padding:3px 0 6px} .scroll{max-height:none}
  td[data-l]:before{content:attr(data-l);display:block;font-size:12px;color:var(--mut)} td.n{text-align:left}
  .scroll{border:0}
 }
@@ -59,9 +60,7 @@ tr.mk-like>td{background:rgba(242,201,76,.18)}tr.mk-visto>td:not(.mkc){text-deco
 </div>
 <p class="es" id="cuenta"></p>
 <div class="scroll"><table><thead><tr>
-<th>标记<small>Marca</small></th><th>结论<small>Veredicto</small></th><th>省份<small>Provincia</small></th><th>车<small>Coche · matrícula</small></th><th>截止<small>Cierre</small></th><th>拍卖类型<small>Tipo</small></th>
-<th class="n">估价<small>Valor</small></th><th class="n">现在最高出价<small>Puja actual</small></th><th class="n">自动成交价<small>Adjudicación automática</small></th><th class="n">我们最多出<small>Puja máx. rentable</small></th><th class="n">建议出价 → 赚<small>Puja sugerida → beneficio</small></th><th class="n">可比车<small>Comparables</small></th><th>为什么<small>Motivo</small></th>
-</tr></thead><tbody id="tb"></tbody></table></div>
+<th>标记<small>Marca</small></th><th>结论<small>Veredicto</small></th><th>车 · 省份<small>Coche · provincia</small></th><th>截止 · 拍卖类型<small>Cierre · tipo</small></th><th class="n">估价<small>Valor</small></th><th class="n">现在最高出价<small>Puja actual</small></th><th class="n">自动成交价<small>Adjudicación automática</small></th><th class="n">我们最多出<small>Puja máx. rentable</small></th><th class="n">建议出价 → 赚<small>Puja sugerida → beneficio</small></th><th class="n">可比车<small>Comparables</small></th></tr></thead><tbody id="tb"></tbody></table></div>
 <h2>11-14 以后新出现的拍卖车 / Subastas nuevas desde el 14-11</h2>
 <p class="es">在 BOE 上又找到 2 辆新的车，按规则都排除了。<span class="es-b">Dos vehículos nuevos en el BOE; los dos quedan excluidos por la regla de antigüedad.</span></p>
 <div class="scroll"><table><thead><tr><th>拍卖<small>Subasta</small></th><th>车<small>Coche</small></th><th>谁拍卖<small>Autoridad</small></th><th class="n">估价<small>Valor</small></th><th class="n">现在最高出价<small>Puja 20-11</small></th><th>截止<small>Cierre</small></th><th>结论<small>Veredicto</small></th></tr></thead><tbody><tr><td>SUB-JA-2026-267712</td><td>Audi Q7<br><small>8859FFD · ≈2006 (por la matrícula)</small></td><td>Juzgado de Alicante (Sección Civil, plaza 14)</td><td class='n'>5.898 €</td><td class='n'>118 €</td><td>2026-12-09 18:00</td><td>⚫ 排除：按车牌推算是 2006 年左右（≤2006 的车不考虑）。<br><small>Excluido: año ≤ 2006 según la matrícula (regla del encargo).</small></td></tr><tr><td>SUB-JC-2026-262873 (lote 3)</td><td>Nissan Patrol GR<br><small>S-2553-AN · 1999</small></td><td>Juzgado de Logroño (concursal)</td><td class='n'>2.220 €</td><td class='n'>没人出价<br><small>sin pujas</small></td><td>2026-12-10 18:00</td><td>⚫ 排除：1999 年的车。<br><small>Excluido: matriculado en 1999.</small></td></tr></tbody></table></div>
@@ -111,22 +110,23 @@ function draw() {
   const xs = R.filter((r) => pass(r)).sort((a, b) => ORD[a.clase] - ORD[b.clase] || (b.ben ?? -1e9) - (a.ben ?? -1e9) || (a.prov || '').localeCompare(b.prov || '', 'es'));
   $('#cuenta').textContent = `显示 ${xs.length} 辆 / Se muestran ${xs.length} coches`;
   const tb = $('#tb'); tb.replaceChildren();
-  xs.forEach((r) => { const tr = el('tr'); const m = MK.of(r.vid); if (m !== 'none') tr.className = 'mk-' + m;
+  xs.forEach((r) => { const tr = el('tr', null, 'main'); const tr2 = el('tr', null, 'sub'); const m = MK.of(r.vid); if (m !== 'none') { tr.classList.add('mk-' + m); tr2.classList.add('mk-' + m); }
     const td = (l, main, sub, cls) => { const c = el('td', null, cls); c.dataset.l = l; if (main instanceof Node) c.append(main); else c.append(document.createTextNode(main ?? '—')); if (sub) c.append(el('small', sub)); tr.append(c); return c; };
-    const mc = td('标记 Marca', MK.btns(r.vid), null, 'mkc');
-    td('结论 Veredicto', CL[r.clase][0] + ' ' + SH[r.clase][0], SH[r.clase][1] + (r.clase_puja ? ' · ' + (r.clase_puja === 'verde' ? '数字是 🟢 / cifras 🟢' : '数字是 🟡 / cifras 🟡') : ''), 'c-' + r.clase + ' nw');
-    td('省份 Provincia', r.prov_zh || '', (r.ciudad && r.ciudad !== r.prov ? r.ciudad + ' · ' : '') + (r.prov || ''));
-    { const c = td('车 Coche', `${r.coche} · ${r.anio || ''}`, `${r.matricula || ''} · ${r.vid}${r.km ? ' · ' + grp(r.km) + ' km' : ''} · «${r.oficial}»`, 'car'); if (r.link) { const a = el('a', r.vid.startsWith('BOE') ? 'BOE 公告' : '社保局 TGSS'); a.href = r.link; a.target = '_blank'; a.rel = 'noopener'; c.append(a); } }
-    td('截止 Cierre', r.fin, r.dic ? '' : '11 月 / noviembre', 'nw');
-    td('拍卖类型 Tipo', REG[r.regla][0], REG[r.regla][1] + (r.deposito ? ' · 押金 ' + eur(r.deposito) : ''));
+    td('标记 Marca', MK.btns(r.vid), null, 'mkc');
+    td('结论 Veredicto', CL[r.clase][0] + ' ' + SH[r.clase][0], SH[r.clase][1] + (r.clase_puja ? ' · ' + (r.clase_puja === 'verde' ? '数字是 🟢 / cifras 🟢' : '数字是 🟡 / cifras 🟡') : ''), 'c-' + r.clase);
+    { const c = td('车 · 省份 Coche · provincia', `${r.coche} · ${r.anio || ''}`, `${r.matricula || ''} · ${r.vid}${r.km ? ' · ' + grp(r.km) + ' km' : ''}`, 'car');
+      c.append(el('small', `📍 ${r.prov_zh || ''} ${(r.ciudad && r.ciudad !== r.prov ? r.ciudad + ' · ' : '') + (r.prov || '')}`)); c.append(el('small', `«${r.oficial}»`));
+      if (r.link) { const a = el('a', r.vid.startsWith('BOE') ? 'BOE 公告 / Anuncio' : '社保局 TGSS / Anuncio'); a.href = r.link; a.target = '_blank'; a.rel = 'noopener'; const s = el('small'); s.append(a); c.append(s); } }
+    { const c = td('截止 · 拍卖类型 Cierre · tipo', r.fin, r.dic ? '' : '11 月 / noviembre', 'nw'); c.append(el('small', REG[r.regla][0] + ' · ' + REG[r.regla][1])); if (r.deposito) c.append(el('small', '押金 Depósito ' + eur(r.deposito))); }
     td('估价 Valor', eur(r.valor), null, 'n');
     td('现在最高出价 Puja actual', r.puja != null ? eur(r.puja) : (r.puja_estado === 'sin_pujas' ? '没人出价' : r.puja_estado === 'secreta' ? '保密' : r.puja_estado === 'presencial' ? '看不到' : '—'), r.puja != null ? '20-11 20:55' : (r.puja_estado === 'sin_pujas' ? 'sin pujas' : r.puja_estado === 'secreta' ? 'pujas secretas' : r.puja_estado === 'presencial' ? 'presencial' : ''), 'n');
-    td('自动成交价 Adjudicación automática', eur(r.seguro), r.valor ? Math.round(r.seguro / r.valor * 100) + '% del valor' : null, 'n');
+    td('自动成交价 Adjudicación automática', eur(r.seguro), r.valor && r.seguro != null ? Math.round(r.seguro / r.valor * 100) + '% del valor' : null, 'n');
     td('我们最多出 Puja máx.', eur(r.pmax), null, 'n');
     td('建议出价 → 赚 Puja sugerida', r.rec != null ? eur(r.rec) + ' → ' + eur(r.ben) : '—', r.rec != null ? (r.rec >= r.seguro ? '自动成交 / automática' : '低价，有风险 / baja, con riesgo') : null, 'n');
-    { const c = td('可比车 Comparables', r.comps != null ? r.comps + ' 辆' : '—', r.comps != null ? (r.comps >= 5 ? 'suficientes' : 'pocos') : null, 'n'); }
-    { const c = td('为什么 Motivo', r.motivo_zh, r.motivo_es, 'mot'); const a = el('a', '详细计算 / Cálculo completo'); a.href = 'explicacion.html#' + r.vid; a.target = '_blank'; c.append(a); }
-    tb.append(tr); });
+    td('可比车 Comparables', r.comps != null ? r.comps + ' 辆' : '—', r.comps != null ? (r.comps >= 5 ? 'suficientes' : 'pocos') : null, 'n');
+    { const c = el('td'); c.colSpan = 10; c.dataset.l = '为什么 Motivo'; c.append(el('b', '为什么：')); c.append(document.createTextNode(r.motivo_zh || '')); c.append(el('small', r.motivo_es || '', 'es'));
+      const a = el('a', '详细计算 / Cálculo completo'); a.href = 'explicacion.html#' + r.vid; a.target = '_blank'; c.append(a); tr2.append(c); }
+    tb.append(tr); tb.append(tr2); });
 }
 ['#f-dic', '#f-cl', '#f-prov', '#f-mk'].forEach((s) => $(s).addEventListener('change', draw)); $('#f-q').addEventListener('input', draw);
 draw(); MK.sync(); MK.pull();
