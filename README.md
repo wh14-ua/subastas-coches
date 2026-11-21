@@ -8,7 +8,9 @@ Ordenado por provincia. Cada coche subastado: valor, puja máxima, cierre y si s
 
 全部 278 辆拍卖车 / Los 278 coches: https://wh14-ua.github.io/subastas-coches/todos.html
 
-🆕 出价机会（按 11-20 的真实出价重新算）/ Oportunidades por puja (20-11-2026): https://wh14-ua.github.io/subastas-coches/oportunidades.html
+出价机会（11-21 的真实出价 + 历史上能赢的概率，可按拍卖类型和出价方式筛选）/ Oportunidades por puja (21-11-2026), con probabilidad histórica de ganar y filtros por tipo de subasta y de puja: https://wh14-ua.github.io/subastas-coches/oportunidades.html
 
-数据 2026-11-17（车行）；出价和拍卖状态 2026-11-20。所有检查都是自动完成的，没有人去现场看车。广告每天都在变。
-Concesionarios: 17-11-2026; pujas y estado de las subastas: 20-11-2026. Comprobado de forma automática, sin ver los coches. Los anuncios cambian cada día.
+🆕 拍卖一般会怎样结束（统计）/ Qué suele pasar en las subastas: https://wh14-ua.github.io/subastas-coches/resultados.html
+
+数据 2026-11-17（车行）；出价和拍卖状态 2026-11-21 03:44（BOE）、2026-11-20（社保局）。所有检查都是自动完成的，没有人去现场看车。广告每天都在变。
+Concesionarios: 17-11-2026; pujas y estado: 21-11-2026 03:44 (BOE) y 20-11-2026 (Seguridad Social). Comprobado de forma automática, sin ver los coches. Los anuncios cambian cada día.
